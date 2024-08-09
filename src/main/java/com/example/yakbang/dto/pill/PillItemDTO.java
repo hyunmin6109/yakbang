@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Getter @Setter @ToString
-@NoArgsConstructor @AllArgsConstructor @Builder
-public class PillDTO {
+@NoArgsConstructor @AllArgsConstructor
+public class PillItemDTO {
     // e-약은요
+    private Long pillId;
     @JsonProperty("entpName")
     private String companyName; // 제조사
     @JsonProperty("itemName")
@@ -30,14 +31,12 @@ public class PillDTO {
     private String openDate; // 공개 일자
     @JsonProperty("updateDe")
     private String updateDate; // 수정 날짜
-
-    // 의약품 낱알식별 정보
-    @JsonProperty("COLOR_CLASS1")
-    private String pillColor; // 색상
-    @JsonProperty("SHAPE")
-    private String pillShape; // 형태
     @JsonProperty("itemImage")
-    private String pillImage ; // 약 이미지
+    private String pillImage;
 
+    public String getOpenDate(){
+        String[] strArr = this.openDate.split(" ");
 
+        return strArr[0];
+    }
 }
